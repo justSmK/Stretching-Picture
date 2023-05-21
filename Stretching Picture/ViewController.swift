@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private let height: CGFloat = 270
+    
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         let image = UIImage(named: "twitter")
@@ -16,7 +18,7 @@ class ViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
 //        imageView.frame.origin = .zero
-        imageView.frame.size = CGSize(width: view.frame.width, height: 400)
+        imageView.frame.size = CGSize(width: view.frame.width, height: height)
         return imageView
     }()
     
@@ -28,7 +30,7 @@ class ViewController: UIViewController {
         
         scrollView.frame = view.frame
         scrollView.contentSize = CGSize(width: view.frame.width, height: 1500)
-        scrollView.verticalScrollIndicatorInsets.top = 400 - view.safeAreaInsets.top
+        scrollView.verticalScrollIndicatorInsets.top = height - view.safeAreaInsets.top
         
         return scrollView
     }()
@@ -47,7 +49,7 @@ class ViewController: UIViewController {
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0 {
-            let imageViewHeight = 400 - scrollView.contentOffset.y
+            let imageViewHeight = height - scrollView.contentOffset.y
             
             imageView.frame.origin = CGPoint(x: 0, y: scrollView.contentOffset.y)
             imageView.frame.size = CGSize(width: view.frame.width, height: imageViewHeight)
