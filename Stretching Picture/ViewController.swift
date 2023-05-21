@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         imageView.image = image
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
-//        imageView.frame.origin = .zero
+        imageView.frame.origin = .zero
         imageView.frame.size = CGSize(width: view.frame.width, height: height)
         return imageView
     }()
